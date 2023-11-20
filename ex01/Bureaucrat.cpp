@@ -6,14 +6,15 @@
 /*   By: aaslan <aaslan@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 12:59:49 by aaslan            #+#    #+#             */
-/*   Updated: 2023/11/20 20:34:18 by aaslan           ###   ########.fr       */
+/*   Updated: 2023/11/20 20:33:41 by aaslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 // Orthodox Canonical Form
-Bureaucrat::Bureaucrat(void)
+Bureaucrat::Bureaucrat(void) : name("Default"), grade(150)
 {
 }
 
@@ -66,6 +67,24 @@ void Bureaucrat::decrementGrade(void)
 	if (grade + 1 > 150)
 		throw GradeTooLowException();
 	grade++;
+}
+
+void Bureaucrat::signForm(Form &form) const
+{
+	if (form.getIsSigned())
+	{
+		std::cout << getName() << " couldn’t sign " << form.getName() << " because it's already signed." << std::endl;
+		return;
+	}
+	try
+	{
+		form.beSigned(*this);
+		std::cout << getName() << " signed " << form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << getName() << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+	}
 }
 
 // Custom Exceptions
