@@ -6,7 +6,7 @@
 /*   By: aaslan <aaslan@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 12:59:49 by aaslan            #+#    #+#             */
-/*   Updated: 2023/11/21 12:42:39 by aaslan           ###   ########.fr       */
+/*   Updated: 2023/11/21 12:45:05 by aaslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 
 // Forward Declaration
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -37,7 +37,8 @@ public:
 	int getGrade(void) const;
 	void incrementGrade(void);
 	void decrementGrade(void);
-	void signForm(Form &form) const;
+	void signForm(AForm &form) const;
+	void executeForm(const AForm &form);
 
 	// Custom Exceptions
 	class GradeTooHighException : public std::exception

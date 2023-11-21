@@ -6,12 +6,12 @@
 /*   By: aaslan <aaslan@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 12:59:49 by aaslan            #+#    #+#             */
-/*   Updated: 2023/11/21 15:53:08 by aaslan           ###   ########.fr       */
+/*   Updated: 2023/11/21 15:53:30 by aaslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 // Orthodox Canonical Form
 Bureaucrat::Bureaucrat(void) : name("Bureaucrat"), grade(150)
@@ -69,7 +69,7 @@ void Bureaucrat::decrementGrade(void)
 	grade++;
 }
 
-void Bureaucrat::signForm(Form &form) const
+void Bureaucrat::signForm(AForm &form) const
 {
 	if (form.getIsSigned())
 	{
@@ -84,6 +84,20 @@ void Bureaucrat::signForm(Form &form) const
 	catch (std::exception &e)
 	{
 		std::cout << getName() << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(const AForm &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << getName() << " executed " << form.getName() << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << getName() << " couldn’t execute " << form.getName()
+				  << " because " << e.what() << std::endl;
 	}
 }
 

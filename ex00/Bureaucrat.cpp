@@ -6,14 +6,14 @@
 /*   By: aaslan <aaslan@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 12:59:49 by aaslan            #+#    #+#             */
-/*   Updated: 2023/11/20 20:34:18 by aaslan           ###   ########.fr       */
+/*   Updated: 2023/11/21 15:52:59 by aaslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 // Orthodox Canonical Form
-Bureaucrat::Bureaucrat(void)
+Bureaucrat::Bureaucrat(void) : name("Bureaucrat"), grade(150)
 {
 }
 

@@ -6,7 +6,7 @@
 /*   By: aaslan <aaslan@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:09:01 by aaslan            #+#    #+#             */
-/*   Updated: 2023/11/20 20:34:01 by aaslan           ###   ########.fr       */
+/*   Updated: 2023/11/21 15:53:13 by aaslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Bureaucrat.hpp"
 
 // Orthodox Canonical Form
-Form::Form(void) : name("Default"), isSigned(false), gradeToSign(150), gradeToExecute(150)
+Form::Form(void) : name("Form"), isSigned(false), gradeToSign(150), gradeToExecute(150)
 {
 }
 
@@ -65,10 +65,9 @@ int Form::getGradeToExecute(void) const
 
 void Form::beSigned(const Bureaucrat &bureaucrat)
 {
-	if (bureaucrat.getGrade() <= gradeToSign)
-		isSigned = true;
-	else
+	if (bureaucrat.getGrade() > gradeToSign)
 		throw GradeTooLowException();
+	isSigned = true;
 }
 
 // Custom Exceptions
